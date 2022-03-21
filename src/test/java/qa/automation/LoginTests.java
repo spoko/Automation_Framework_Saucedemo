@@ -1,34 +1,17 @@
 package qa.automation;
 
+import base.TestUtil;
 import com.opencsv.exceptions.CsvException;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.CsvHelper;
 
 import java.io.IOException;
 
-public class LoginTests {
-    private WebDriver driver;
-
-    @BeforeTest
-    public void initializeDriver(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-    }
-
-    @AfterTest
-    public void tearDown(){
-        driver.quit();
-    }
+public class LoginTests extends TestUtil {
 
     //dataprovider1
     @DataProvider(name = "wrongUsersList")
@@ -48,7 +31,7 @@ public class LoginTests {
 
     @Test (dataProvider = "wrongUsersList")//this is using dataprovider1
     public void UnsuccessfulLogin(String userName, String password){
-        driver.get("https://www.saucedemo.com/");
+        //driver.get("https://www.saucedemo.com/");
 
         WebElement username = driver.findElement(By.id("user-name"));
         username.click();
@@ -69,7 +52,7 @@ public class LoginTests {
 
     @Test(dataProvider = "csvUserList")
     public void SuccessfulLogin(String userName, String password){
-        driver.get("https://www.saucedemo.com/");
+        //driver.get("https://www.saucedemo.com/");
 
         WebElement username = driver.findElement(By.id("user-name"));
         username.click();
