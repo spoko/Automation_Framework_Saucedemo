@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -15,8 +16,8 @@ public class MyFirstTest {
 
     @BeforeTest
     public void initializeDriver(){
-        WebDriverManager.chromedriver().setup();//
-        driver = new ChromeDriver();
+        WebDriverManager.safaridriver().setup();
+        driver = new SafariDriver();
     }
 
     @AfterTest
@@ -35,7 +36,7 @@ public class MyFirstTest {
         //find element using xpath and indexing the results
         WebElement password = driver.findElement(By.xpath("(//input[@class='input_error form_input'])[2]"));
         password.click();
-        password.sendKeys("secret_sauce12");
+        password.sendKeys("secret_sauce");
 
         WebElement loginBtn = driver.findElement(By.cssSelector("[value=Login]"));
         loginBtn.click();
