@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+import pages.LoginPage;
+import pages.ProductsPage;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -45,5 +47,11 @@ public class ProductTests extends TestUtil {
         fluentWait.until(ExpectedConditions.elementToBeClickable(lowToHighPriceOption));
         lowToHighPriceOption.click();
         //Thread.sleep(3000);
+    }
+
+    @Test
+    public void addItemToTheCart(){
+        LoginPage loginPage = new LoginPage(driver);
+        ProductsPage productsPage = loginPage.login("standard_user", "secret_sauce");
     }
 }
