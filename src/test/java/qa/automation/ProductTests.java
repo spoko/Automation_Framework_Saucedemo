@@ -4,12 +4,12 @@ import base.TestUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.LoginPage;
 import pages.ProductsPage;
 
@@ -61,7 +61,12 @@ public class ProductTests extends TestUtil {
 
         productsPage.removeItemFromTheCart("onesie");
 
-        //Hard Assert
-        Assert.assertEquals(productsPage.getItemsInTheCart(), 0, "Because we have only one item so far");
+        //Soft Assert
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(productsPage.getItemsInTheCart(), 0, "Because we have only one item so far");
+        System.out.println("I will be executed");
+
+        //for example at the end of the test
+        softAssert.assertAll(); // now all asserts
     }
 }
