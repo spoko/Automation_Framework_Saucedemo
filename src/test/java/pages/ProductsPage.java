@@ -27,7 +27,23 @@ public class ProductsPage {
         addToCartButton.click();
     }
 
+    public boolean removeItemFromTheCart(String productName){
+        String xpathOfElementToBeAdded = String.format(ADD_TO_CART_LOCATOR, productName);
+        WebElement removeButton = driver.findElement(By.xpath(xpathOfElementToBeAdded));
+
+        if (removeButton.getText().equals("Remove")){
+            removeButton.click();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public int getItemsInTheCart(){
-        return Integer.parseInt(shoppingCartCounter.getText());
+        if(shoppingCartCounter.getText().isEmpty()){
+            return 0;
+        }else{
+            return Integer.parseInt(shoppingCartCounter.getText());
+        }
     }
 }
