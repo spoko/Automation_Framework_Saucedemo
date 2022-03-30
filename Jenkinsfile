@@ -30,6 +30,12 @@ pipeline {
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
         }
+
+        stage('Demo in Jenkins') {
+                    steps {
+                        echo "Demoing"
+                    }
+                }
     }
 
 
