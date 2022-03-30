@@ -75,5 +75,6 @@ public class LoginTests extends TestUtil {
 //        Assert.assertTrue(userAllPagesButton.isDisplayed(), "This shall be visible after successful login");
         LoginPage loginPage = new LoginPage(driver);
         ProductsPage productsPage = loginPage.login(userName, password);
+        //adding a line for test the starting of the build
     }
 }
