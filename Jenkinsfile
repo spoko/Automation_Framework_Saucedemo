@@ -10,7 +10,7 @@ pipeline {
         stage('Clean') {
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                git 'https://github.com/spoko/Automation_Framework_Saucedemo.git'
 
                 // Run Maven on a Unix agent.
                 sh "mvn clean"
